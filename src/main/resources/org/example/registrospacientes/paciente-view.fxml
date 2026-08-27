@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.registrospacientes.controlador.PacienteController">
+    <padding>
+        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+    </padding>
+    <top>
+        <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Registro y Gestión de Pacientes" BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets bottom="15.0" />
+            </BorderPane.margin>
+        </Label>
+    </top>
+    <left>
+        <VBox prefWidth="250.0" spacing="10.0" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets right="15.0" />
+            </padding>
+            <Label style="-fx-font-weight: bold;" text="Datos del Paciente:" />
+
+            <Label text="Nombre Completo:" />
+            <TextField fx:id="txtNombre" />
+
+            <Label text="Fecha de Nacimiento:" />
+            <DatePicker fx:id="dpFechaNacimiento" prefWidth="235.0" />
+
+            <HBox spacing="10.0">
+                <padding>
+                    <Insets top="10.0" />
+                </padding>
+                <Button onAction="#guardarPaciente" style="-fx-background-color: #28a745; -fx-text-fill: white;" text="Guardar" />
+                <Button onAction="#limpiarFormulario" text="Limpiar" />
+            </HBox>
+
+            <Button onAction="#eliminarPaciente" style="-fx-background-color: #dc3545; -fx-text-fill: white;" text="Eliminar Seleccionado" />
+            <Label fx:id="lblMensaje" textFill="RED" wrapText="true" />
+        </VBox>
+    </left>
+    <center>
+        <TableView fx:id="tablaPacientes" BorderPane.alignment="CENTER">
+            <columns>
+                <TableColumn fx:id="colNombre" prefWidth="250.0" text="Nombre" />
+                <TableColumn fx:id="colFechaNacimiento" prefWidth="200.0" text="Fecha de Nacimiento" />
+            </columns>
+        </TableView>
+    </center>
+</BorderPane>

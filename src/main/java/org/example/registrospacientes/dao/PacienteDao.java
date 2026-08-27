@@ -17,6 +17,12 @@ public class PacienteDao {
         System.out.println("-> Paciente guardado con éxito: " + paciente.getNombres() + " " + paciente.getApellidos());
     }
 
+    // MÉTODO NUEVO PARA ELIMINAR
+    public void eliminarPaciente(Paciente paciente) {
+        this.pacientes.remove(paciente);
+        System.out.println("-> Paciente eliminado con éxito: " + paciente.getNombres() + " " + paciente.getApellidos());
+    }
+
     public List<Paciente> listarPacientes() {
         return pacientes;
     }

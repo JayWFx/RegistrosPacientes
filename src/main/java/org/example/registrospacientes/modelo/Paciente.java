@@ -1,22 +1,33 @@
 package org.example.registrospacientes.modelo;
 
+import java.time.LocalDate;
+
 public class Paciente {
-    private String nombres;
+    private String nombre;
     private String apellidos;
-    private String genero;
+    private LocalDate fechaNacimiento;
 
-    public Paciente(String nombres, String apellidos, String genero) {
-        this.nombres = nombres;
+    public Paciente() {}
+
+    public Paciente(String nombre, String apellidos, LocalDate fechaNacimiento) {
+        this.nombre = nombre;
         this.apellidos = apellidos;
-        this.genero = genero;
+        this.fechaNacimiento = fechaNacimiento;
     }
 
-    public String getNombres() { return nombres; }
+    public Paciente(String nombre, LocalDate fechaNacimiento) {
+        this(nombre, "", fechaNacimiento);
+    }
+
+    public String getNombre() { return nombre; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
+
+    public String getNombres() { return nombre; }
+    public void setNombres(String nombres) { this.nombre = nombres; }
+
     public String getApellidos() { return apellidos; }
-    public String getGenero() { return genero; }
+    public void setApellidos(String apellidos) { this.apellidos = apellidos; }
 
-    @Override
-    public String toString() {
-        return nombres + " " + apellidos + " - " + genero;
-    }
+    public LocalDate getFechaNacimiento() { return fechaNacimiento; }
+    public void setFechaNacimiento(LocalDate fechaNacimiento) { this.fechaNacimiento = fechaNacimiento; }
 }

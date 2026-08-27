@@ -10,10 +10,9 @@ import java.io.IOException;
 public class PacientesApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        // Carga la interfaz paciente-viex.fxml
-        FXMLLoader fxmlLoader = new FXMLLoader(PacientesApplication.class.getResource("paciente-viex.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
-        stage.setTitle("Registro de Pacientes");
+        FXMLLoader fxmlLoader = new FXMLLoader(PacientesApplication.class.getResource("login-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 350, 320);
+        stage.setTitle("Acceso al Sistema");
         stage.setScene(scene);
         stage.show();
     }
