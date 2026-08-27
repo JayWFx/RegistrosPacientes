@@ -11,32 +11,12 @@ public class Paciente {
         this.genero = genero;
     }
 
-    public String getNombres() {
-        return nombres;
-    }
-
-    public void setNombres(String nombres) {
-        this.nombres = nombres;
-    }
-
-    public String getApellidos() {
-        return apellidos;
-    }
-
-    public String getGenero() {
-        return genero;
-    }
-
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
-    }
-
-    public void setGenero(String genero) {
-        this.genero = genero;
-    }
+    public String getNombres() { return nombres; }
+    public String getApellidos() { return apellidos; }
+    public String getGenero() { return genero; }
 
     @Override
     public String toString() {
-        return nombres + " " + apellidos + " - " +  genero  ;
+        return nombres + " " + apellidos + " - " + genero;
     }
 }

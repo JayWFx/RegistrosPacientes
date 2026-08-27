@@ -25,32 +25,28 @@ public class PacienteController {
     private RadioButton rbMujer;
 
     @FXML
-    private ListView <Paciente> lvPacientes;
+    private ListView<Paciente> lvPacientes;
 
     private ToggleGroup grupoGenero;
     private final PacienteDao pacienteDao = new PacienteDao();
-
-    //  actualiza visualmente al ListView automáticamente
     private final ObservableList<Paciente> listaObservable = FXCollections.observableArrayList();
 
     @FXML
     public void initialize() {
+        // Unifica los RadioButtons para seleccionar solo uno a la vez
         grupoGenero = new ToggleGroup();
         rbHombre.setToggleGroup(grupoGenero);
         rbMujer.setToggleGroup(grupoGenero);
 
+        // Enlaza la lista visual con el componente de la pantalla
         lvPacientes.setItems(listaObservable);
     }
 
     @FXML
     protected void agregarOnClick() {
-        leerDatos();
-        limpiarCampos();
-    }
+        String nombres = txtNombres.getText().trim();
+        String apellidos = txtApellidos.getText().trim();
 
-    private void leerDatos() {
-        String nombres = txtNombres.getText();
-        String apellidos = txtApellidos.getText();
         String genero = "";
         if (rbHombre.isSelected()) {
             genero = "Hombre";
@@ -58,22 +54,24 @@ public class PacienteController {
             genero = "Mujer";
         }
 
-
-        if (!nombres.trim().isEmpty() && !apellidos.trim().isEmpty()) {
+        // Si los 3 datos existen, guarda y actualiza la pantalla
+        if (!nombres.isEmpty() && !apellidos.isEmpty() && !genero.isEmpty()) {
             Paciente paciente = new Paciente(nombres, apellidos, genero);
+
             pacienteDao.agregarPaciente(paciente);
+            listaObservable.add(paciente); // Inserta el dato directamente en la vista
+
+            limpiarCampos();
         } else {
-            System.out.println("Por favor ingrese tanto el nombre como el apellido.");
+            System.out.println("Debe ingresar Nombre, Apellido y seleccionar un género.");
         }
     }
 
     private void limpiarCampos() {
-        txtNombres.setText("");
-        txtApellidos.setText("");
-
+        txtNombres.clear();
+        txtApellidos.clear();
         if (grupoGenero.getSelectedToggle() != null) {
             grupoGenero.getSelectedToggle().setSelected(false);
         }
     }
-
 }
